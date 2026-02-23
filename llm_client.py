@@ -1,13 +1,15 @@
 from google import genai
 import json
 
+from typing import *
+
 class LLM():
     
-    def __init__(self, config):
+    def __init__(self, config:dict[str, str]) -> None:
         
         self.client = genai.Client(api_key=config["GEMINI_API_KEY"])
         
-    def get_response(self, prompt):
+    def get_response(self, prompt:str) -> Optional[Dict[str, Any]]:
         response = self.client.models.generate_content(model="gemini-3-flash-preview", contents=prompt)
         text_content = response.text.strip()
         if text_content.startswith("```json"):
