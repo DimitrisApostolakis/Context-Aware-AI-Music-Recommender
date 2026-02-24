@@ -1,7 +1,9 @@
 # Secrets
 .env
 .cache
-.json
+*.json
+.token_cache
+
 
 # Python
 __pycache__/
